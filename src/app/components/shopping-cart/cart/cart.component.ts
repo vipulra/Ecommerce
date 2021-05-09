@@ -17,13 +17,18 @@ export class CartComponent implements OnInit {
   constructor(private msg: MessengerService) { }
 
   ngOnInit() {
-    this.msg.getMsg().subscribe((product : Product) => {
-      this.cartItems.push({
-        productName:product.name,
-        qty: 1,
-        price: product.price
+    this.msg.getMsg().subscribe((product) => {
+      // this.cartItems.push({
+      //   productName: "111",
+      //   qty: 1,
+      //   price: product.price
 
-      })
+      // })
+
+      // this.cartTotal =0;
+      // this.cartItems.forEach(item => {
+      //   this.cartTotal += (item.price * item.qty)
+      // })
     })
 
 

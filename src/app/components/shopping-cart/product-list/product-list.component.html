@@ -2,7 +2,8 @@
   </header><!-- sect-heading -->
 
   <div class="row">
-<div class="col-md-4" *ngFor = "let product of products">
+<div class="col-md-4" *ngFor = "let product of productList | paginate: { itemsPerPage: 9, currentPage: p }">
   <app-product-item [productItem] = "product"></app-product-item>
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div> <!-- row end.// -->
