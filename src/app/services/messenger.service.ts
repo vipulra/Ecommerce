@@ -16,7 +16,7 @@ export class MessengerService {
     this.subject.next(product)
   }
 
-  getMsg(){
+  getMsg() {
     return this.subject.asObservable()
   }
 }

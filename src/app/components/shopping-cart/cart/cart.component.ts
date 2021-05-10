@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { CartItem } from 'src/app/models/cart-item';
+import { CartService } from 'src/app/services/cart.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
@@ -8,31 +9,43 @@ import { MessengerService } from 'src/app/services/messenger.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cartItems = [
-
-  ];
+  cartItems : CartItem[] = [];
 
   cartTotal = 0;
 
-  constructor(private msg: MessengerService) { }
+  constructor(
+    private msg: MessengerService,
+    private cartService : CartService
+    ) { }
 
   ngOnInit() {
-    this.msg.getMsg().subscribe((product) => {
-      // this.cartItems.push({
-      //   productName: "111",
-      //   qty: 1,
-      //   price: product.price
-
-      // })
-
-      // this.cartTotal =0;
-      // this.cartItems.forEach(item => {
-      //   this.cartTotal += (item.price * item.qty)
-      // })
-    })
-
-
-
+    this.handleSubscription();
+    this.loadCartItems();
   }
+
+
+    handleSubscription() {
+      this.msg.getMsg().subscribe(product => {
+        this.loadCartItems();
+      })
+    }
+
+    loadCartItems(){
+      this.cartService.getCartItem().subscribe((items : CartItem[]) => {
+        this.cartItems = items;
+        this.calCartTotal();
+      })
+    }
+
+    calCartTotal() {
+      this.cartTotal =0;
+      this.cartItems.forEach(item =>{
+        this.cartTotal += (item.qty * item.price);
+      })
+    }
+
+
+
+
 
 }

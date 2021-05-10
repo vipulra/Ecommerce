@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
+import { productUrl } from '../config/api';
 
 const apiUrl = "https://609265ea85ff510017212a0d.mockapi.io/product";
 @Injectable({
@@ -21,6 +22,6 @@ export class ProductService {
   constructor(private http: HttpClient ) { }
 
   getProduct(): Observable<Product[]>{
-    return this.http.get<Product[]>(apiUrl);
+    return this.http.get<Product[]>(productUrl);
   }
 }
