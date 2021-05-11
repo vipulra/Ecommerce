@@ -46,4 +46,14 @@ export class CartService {
   addProductToCart(product: Product): Observable<any>{
     return this.http.post(cartUrl,{ product});
   }
+
+  deleteItemToCart(productId:number) {
+    this.http.get<any[]>(cartUrl).subscribe(items=>{
+      for(let item of items){
+        if(item.product.id === productId){
+          this.http.delete(cartUrl + item.id);
+        }
+      }
+    })
+  }
 }
