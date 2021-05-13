@@ -34,11 +34,9 @@ export class CartService {
       if(!productExist) {
         cartItems.push( new CartItem(item.id, item.product));
       }
-
         }
         return cartItems;
       }
-
       )
     )
   }
@@ -48,10 +46,10 @@ export class CartService {
   }
 
   deleteItemToCart(productId:number) {
-    this.http.get<any[]>(cartUrl).subscribe(items=>{
+    this.http.get<any[]>(cartUrl).subscribe(async items=>{
       for(let item of items){
         if(item.product.id === productId){
-          this.http.delete(cartUrl + item.id);
+          await this.http.delete(cartUrl + item.id).toPromise();
         }
       }
     })

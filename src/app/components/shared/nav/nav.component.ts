@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +9,13 @@ export class NavComponent implements OnInit {
 
   constructor() { }
 
+  @Input() cartLength : number = 0;
+
   ngOnInit(): void {
+  }
+
+  updateCartLength(cartlength: number){
+     this.cartLength = cartlength;
   }
 
 }

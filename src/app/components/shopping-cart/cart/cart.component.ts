@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
 import { CartService } from 'src/app/services/cart.service';
 import { MessengerService } from 'src/app/services/messenger.service';
@@ -9,6 +9,8 @@ import { MessengerService } from 'src/app/services/messenger.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+
+  @Output() noOfItems: EventEmitter<number> = new EventEmitter();
   cartItems : CartItem[] = [];
 
   cartTotal = 0;
@@ -21,6 +23,18 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.handleSubscription();
     this.loadCartItems();
+  }
+
+  removeItemLine(id: number){
+    this.cartItems.forEach((item,index)=> {
+      if(item.id === id) this.cartItems.splice(index,1);
+    })
+    this.calCartTotal();
+  }
+
+  deleteItem(productId:number,id:number) {
+    this.cartService.deleteItemToCart(productId)
+    this.removeItemLine(id);
   }
 
 
@@ -42,6 +56,8 @@ export class CartComponent implements OnInit {
       this.cartItems.forEach(item =>{
         this.cartTotal += (item.qty * item.price);
       })
+      this.noOfItems.emit(this.cartItems.length);
+
     }
 
 
