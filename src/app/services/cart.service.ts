@@ -15,6 +15,32 @@ export class CartService {
 
   constructor(private http : HttpClient) { }
 
+  getMiniCartItem(): Observable<CartItem[]> {
+    return this.http.get<CartItem[]>(cartUrl).pipe(
+      map((result : any) => {
+        let cartItems: CartItem[] = [];
+
+        for (let item of result) {
+          let productExist = false
+
+      for( let i in cartItems) {
+        if(cartItems[i].productId === item.product.id) {
+          cartItems[i].qty++
+          productExist = true
+          break;
+        }
+      }
+
+      if(!productExist) {
+        cartItems.push( new CartItem(item.id, item.product));
+      }
+        }
+        return cartItems;
+      }
+      )
+    )
+  }
+
   getCartItem(): Observable<CartItem[]> {
     return this.http.get<CartItem[]>(cartUrl).pipe(
       map((result : any) => {

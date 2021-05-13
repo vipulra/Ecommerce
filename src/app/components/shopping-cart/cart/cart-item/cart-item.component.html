@@ -22,9 +22,9 @@
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="deleteItem(cartItem.productId, cartItem.id)">Delete</button>
     </div>
   </ng-template>
-
-<hr>
-  <button class="btn btn-danger float-right" (click)="open(content)">Delete</button>
+<br>
+  <a type="button" class="card-link-secondary small text-uppercase mr-3" (click)="open(content)"><i
+    class="fas fa-trash-alt mr-1"></i>Delete</a>
 
   <!-- <button (click)="deleteItem(cartItem.productId, cartItem.id)">Delete</button> -->
 </div>

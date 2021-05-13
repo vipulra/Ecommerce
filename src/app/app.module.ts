@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 import { AppRoutingModule } from './app-routing.module'
 import { HttpClientModule } from '@angular/common/http'
@@ -17,7 +19,8 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
 import { CartItemComponent } from './components/shopping-cart/cart/cart-item/cart-item.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component'
-import { RegisterComponent } from './components/register/register.component'
+import { RegisterComponent } from './components/register/register.component';
+import { CheckoutComponent } from './components/checkout/checkout.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,8 @@ import { RegisterComponent } from './components/register/register.component'
     CartItemComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { RegisterComponent } from './components/register/register.component'
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
