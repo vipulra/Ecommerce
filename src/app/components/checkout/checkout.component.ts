@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
       if(item.id === id) this.cartItems.splice(index,1);
     })
     this.calCartTotal();
+
   }
 
   deleteItem(productId:number,id:number) {

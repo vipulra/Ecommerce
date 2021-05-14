@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import {MessengerService} from 'src/app/services/messenger.service'
 import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-item',
@@ -14,7 +15,8 @@ export class ProductItemComponent implements OnInit {
 
   constructor(
     private msg : MessengerService,
-    private cartService : CartService
+    private cartService : CartService,
+    private router : Router
     ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,10 @@ export class ProductItemComponent implements OnInit {
       this.msg.sendMsg(this.productItem);
     })
 
+  }
+
+  viewDetails(id:number){
+    this.router.navigate(['/products/'+id]);
   }
 
 }
