@@ -9,13 +9,18 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductDetailsComponent } from './components/shopping-cart/product-list/product-details/product-details.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CheckoutPaymentComponent } from './components/checkout/checkout-payment/checkout-payment.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component:  HomeComponent},
   { path: 'cart', component: CheckoutComponent,canActivate: [AuthGuard]},
+  { path: 'checkout', component: CheckoutPaymentComponent,canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'products', component: ShoppingCartComponent },
+  { path: 'category/:cname', component: ShoppingCartComponent },
   { path: 'products/:id', component: ProductDetailsComponent},
   { path: '**', component: PageNotFoundComponent }
 ]

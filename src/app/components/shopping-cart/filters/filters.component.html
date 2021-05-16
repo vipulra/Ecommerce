@@ -1,28 +1,24 @@
-<header class="border-bottom mb-4 pb-3">
-</header><!-- sect-heading -->
 <div class="card">
-	<article class="filter-group">
-		<header class="card-header">
-			<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
-				<i class="icon-control fa fa-chevron-down"></i>
-				<h6 class="title">Price range </h6>
-			</a>
-		</header>
-		<div class="filter-content collapse show" id="collapse_3" style="">
-			<div class="card-body">
-				<input type="range" class="custom-range" min="0" max="100" name="">
-				<div class="form-row">
-				<div class="form-group col-md-6">
-				  <label>Min</label>
-				  <input class="form-control" placeholder="$0" type="number">
-				</div>
-				<div class="form-group text-right col-md-6">
-				  <label>Max</label>
-				  <input class="form-control" placeholder="$1,0000" type="number">
-				</div>
-				</div> <!-- form-row.// -->
-				<button class="btn btn-block btn-primary">Apply</button>
-			</div><!-- card-body.// -->
+	<article class="card-group-item">
+		<header class="card-header"><h6 class="title">Similar category </h6></header>
+		<div class="filter-content">
+			<div class="list-group list-group-flush" *ngFor = "let brand of brands">
+			  <a href="#" class="list-group-item">{{brand}}<span class="float-right badge badge-light round">{{brand}}</span> </a>
+			</div>  <!-- list-group .// -->
 		</div>
-	</article> <!-- filter-group .// -->
-</div>
+	</article> <!-- card-group-item.// -->
+  <article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Selection </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body" *ngFor = "let tag of tags">
+				<div class="custom-control custom-checkbox">
+					<span class="float-right badge badge-light round">52</span>
+				  	<input type="checkbox" class="custom-control-input" id=`{{tag}}`>
+				  	<label class="custom-control-label" for=`{{tag}}`>{{tag}}</label>
+				</div> <!-- form-check.// -->
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// --
+</div> <!-- card.// -->

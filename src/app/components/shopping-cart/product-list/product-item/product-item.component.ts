@@ -29,7 +29,7 @@ export class ProductItemComponent implements OnInit {
 
   }
 
-  viewDetails(id:number){
+  viewDetails(category: string, id:number){
     this.router.navigate(['/products/'+id]);
   }
 

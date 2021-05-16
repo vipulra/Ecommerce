@@ -10,20 +10,37 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink = "['/products']">All Products</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+        <div *ngFor = "let cat of category">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/category/{{cat}}">{{cat}}</a>
+          </li>
+        </div>
       </ul>
-      <div class="nav-item dropdown d-flex">
+
+      <div *ngIf ="!authService.loggedIn()" class="d-flex align-items-center">
+        <button type="button" class="btn btn-link px-3 me-2 text-theme" routerLink="/login">
+          LOGIN
+        </button>
+        <button type="button" class="btn btn-primary btn-theme me-3">
+          SIGN UP
+        </button>
+      </div>
+      <div *ngIf ="authService.loggedIn()" class="nav-item dropdown d-flex">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          My Cart <span>({{cartLength}})</span>
+          <i class="fa" style="font-size:24px">&#xf07a;</i>
+          <span class='badge badge-warning' id='lblCartCount'>{{cartLength}}</span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <app-cart (noOfItems)="updateCartLength($event)"></app-cart>
         </ul>
+        <button (click)="authService.logoutUser()" type="button" class="btn btn-link px-3 me-2 text-theme">
+          Logout
+        </button>
       </div>
     </div>
   </div>
 </nav>
+<br>
+<br>

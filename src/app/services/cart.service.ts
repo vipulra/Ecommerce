@@ -80,4 +80,12 @@ export class CartService {
       }
     })
   }
+
+  emptyCart(){
+    this.getCartItem().subscribe((cartItem : CartItem[]) => {
+      cartItem.forEach((item:CartItem)=> {
+        this.http.delete(cartUrl+item.id);
+      })
+    })
+  }
 }

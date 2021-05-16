@@ -1,0 +1,15 @@
+<div class="card">
+  <h5 class="card-header">Bestseller</h5>
+  <div class="card-body">
+<mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+  <mdb-carousel-item *ngFor = "let product of products">
+      <app-product-item [productItem] = "product"></app-product-item>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Light mask</h3>
+      <p>First text</p>
+    </div>
+  </mdb-carousel-item>
+
+</mdb-carousel>
+<div>
+</div>

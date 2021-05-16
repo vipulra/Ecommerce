@@ -1,0 +1,210 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Checkout</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <app-cart></app-cart>
+      <form class="card p-2">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Promo code">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary">Redeem</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Shipping address</h4>
+      <form class="needs-validation" [formGroup]="shipAdd" (ngSubmit)="addAddress()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input
+                id="firstName"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': shipAdd.get('firstName')?.touched && shipAdd.get('firstName')?.invalid }"
+                formControlName="firstName"
+              />
+              <span class="invalid-feedback">First Name can't be blank.</span>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input
+                type="input"
+                id="lastName"
+                class="form-control"
+                formControlName="lastName"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': shipAdd.get('email')?.touched && shipAdd.get('email')?.invalid }"
+              formControlName="email"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="shipAdd.get('email')?.hasError('required')">Email can't be blank.</span>
+              <span *ngIf="shipAdd.get('email')?.hasError('email')">Email must be valid.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              id="address"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': shipAdd.get('address')?.touched && shipAdd.get('address')?.invalid }"
+              formControlName="address"
+            />
+            <div class="invalid-feedback">
+              Please enter your shipping address.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+          <input
+              id="address2"
+              class="form-control"
+              formControlName="address2"
+            />
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Country</label>
+            <select class="custom-select d-block w-100"
+              id="country"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': shipAdd.get('country')?.touched && shipAdd.get('country')?.invalid }"
+              formControlName="country"
+            >
+              <option value="">Choose...</option>
+              <option>India</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid country.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">State</label>
+            <select class="custom-select d-block w-100"
+              id="state"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': shipAdd.get('state')?.touched && shipAdd.get('state')?.invalid }"
+              formControlName="state">
+              <option value="">Choose...</option>
+              <option>Delhi</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid state.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input
+              id="zip"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': shipAdd.get('zip')?.touched && shipAdd.get('zip')?.invalid }"
+              formControlName="zip"
+            />
+            <div class="invalid-feedback">
+              Zip code required.
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input"
+            id="sameAddress"
+            formControlName="sameAddress">
+          <label class="custom-control-label" for="sameAddress">Shipping address is the same as my billing address</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input"
+            id="saveInfo"
+            formControlName="saveInfo">
+          <label class="custom-control-label" for="saveInfo">Save this information for next time</label>
+        </div>
+        <hr class="mb-4">
+        <div formGroupName="payment">
+        <h4 class="mb-3">Payment</h4>
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" formControlName="paymentMethod" value="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+            <label class="custom-control-label" for="credit">Credit card</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="debit" formControlName="paymentMethod" value="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="debit">Debit card</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="paypal" formControlName="paymentMethod" value="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="paypal">Paypal</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="ccname">Name on card</label>
+            <input type="text" class="form-control" id="ccname" required=""
+              [ngClass]="{ 'is-invalid': shipAdd.get('payment.ccname')?.touched && shipAdd.get('payment.ccname')?.invalid }"
+              formControlName="ccname">
+            <small class="text-muted">Full name as displayed on card</small>
+            <div class="invalid-feedback">
+              Name on card is required
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="ccnumber">Credit card number</label>
+            <input type="text" class="form-control" id="ccnumber" placeholder="" required=""
+            [ngClass]="{ 'is-invalid': shipAdd.get('payment.ccnumber')?.touched && shipAdd.get('payment.ccnumber')?.invalid }"
+            formControlName="ccnumber">
+            <div class="invalid-feedback">
+              Credit card number is required
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="ccexpiration">Expiration</label>
+            <input type="text" class="form-control" id="ccexpiration"
+            [ngClass]="{ 'is-invalid': shipAdd.get('payment.ccexpiration')?.touched && shipAdd.get('payment.ccexpiration')?.invalid }"
+            formControlName="ccexpiration"
+            required="">
+            <div class="invalid-feedback">
+              Expiration date required
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="cccvv">CVV</label>
+            <input type="text" class="form-control" id="cccvv"
+            [ngClass]="{ 'is-invalid': shipAdd.get('payment.cccvv')?.touched && shipAdd.get('payment.cccvv')?.invalid }"
+            formControlName="cccvv"
+            required="">
+            <div class="invalid-feedback">
+              Security code required
+            </div>
+          </div>
+        </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit" >Continue to checkout</button>
+      </form>
+    </div>
+  </div>
+</div>

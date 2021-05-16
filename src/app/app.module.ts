@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
@@ -23,7 +23,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductDetailsComponent } from './components/shopping-cart/product-list/product-details/product-details.component'
 import { AuthGuard } from './auth/auth.guard';
-import { TokenInterceptorService } from './services/token-interceptor.service'
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CheckoutPaymentComponent } from './components/checkout/checkout-payment/checkout-payment.component';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { HomeComponent } from './components/home/home.component';
+import { BestsellerComponent } from './components/home/bestseller/bestseller.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,23 +44,29 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
     LoginComponent,
     RegisterComponent,
     CheckoutComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CheckoutPaymentComponent,
+    CarouselComponent,
+    HomeComponent,
+    BestsellerComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [AuthGuard,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass : TokenInterceptorService,
-    multi : true
-  }],
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass : TokenInterceptorService,
+  //   multi : true
+  // }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

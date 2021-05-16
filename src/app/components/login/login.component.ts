@@ -16,13 +16,14 @@ export class LoginComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit() {
+    localStorage.removeItem('token');
   }
 
   loginUser () {
     if(this._auth.loginUser(this.loginUserData))
       {
         localStorage.setItem('token',
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJhZG1pbiJ9.rFcqI_6iHyIx450Esqa3yXqyZLhPhKt9eKeHcnjYujQ")
+        "eyJhbGciOiJIUzI1NiIsIn.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvc.rFcqI_6iHyIx450Esqa3yXqyZLhPhKt9eKeHcnjYujQ")
         this._router.navigate(['/products'])
       }
       else {
