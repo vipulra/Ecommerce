@@ -1,5 +1,11 @@
+<div class="cart-empty" *ngIf='emptyCart'>
+  <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Your shopping cart is empty.</font></font></p>
+<p><a routerLink = '/home'><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Click here to</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+continue shopping.</font></font></p>
+</div>
 <!--Section: Block Content-->
-<section>
+<section *ngIf='!emptyCart'>
 
   <!--Grid row-->
   <div class="row">
@@ -126,7 +132,7 @@
             </li>
           </ul>
 
-          <button type="button" class="btn btn-primary btn-block">go to checkout</button>
+          <button routerLink='/checkout' type="button" class="btn btn-primary btn-block">go to checkout</button>
 
         </div>
       </div>

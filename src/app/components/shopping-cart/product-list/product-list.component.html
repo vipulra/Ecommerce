@@ -1,6 +1,16 @@
 <header class="border-bottom mb-4 pb-3">
-
+  Products ({{productList.length}} product found)
+  <div class = "float-right"> Filter by:
+  <select id="sort-by" class = "float-right" (change)="sort($event)">
+    <option value="" selected disabled hidden>Sort By</option>
+    <option value="Name">Name</option>
+    <option value="Low">Low to High Price</option>
+    <option value="High">High to Low Price</option>
+</select>
+</div>
 </header><!-- sect-heading -->
+
+
 <div class="row">
 <div class="col-md-4" *ngFor = "let product of productList | paginate: { itemsPerPage: 9, currentPage: p }">
   <app-product-item [productItem] = "product"></app-product-item>

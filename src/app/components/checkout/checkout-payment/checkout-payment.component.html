@@ -1,4 +1,11 @@
-<div class="container">
+<div class="cart-empty" *ngIf='emptyCart'>
+  <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Your shopping cart is empty.</font></font></p>
+<p><a routerLink = '/home'><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Click here to</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+continue shopping.</font></font></p>
+</div>
+
+<div class="container" *ngIf='!emptyCart'>
   <div class="py-5 text-center">
     <h2>Checkout</h2>
   </div>
@@ -6,14 +13,6 @@
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <app-cart></app-cart>
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form>
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Shipping address</h4>
@@ -203,7 +202,7 @@
         </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit" >Continue to checkout</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
       </form>
     </div>
   </div>

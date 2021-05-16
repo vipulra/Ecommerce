@@ -27,7 +27,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CheckoutPaymentComponent } from './components/checkout/checkout-payment/checkout-payment.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { HomeComponent } from './components/home/home.component';
-import { BestsellerComponent } from './components/home/bestseller/bestseller.component'
+import { BestsellerComponent } from './components/home/bestseller/bestseller.component';
+import { SuccessComponent } from './components/checkout/success/success.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { BestsellerComponent } from './components/home/bestseller/bestseller.com
     CheckoutPaymentComponent,
     CarouselComponent,
     HomeComponent,
-    BestsellerComponent
+    BestsellerComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

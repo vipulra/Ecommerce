@@ -11,17 +11,19 @@ import { ProductDetailsComponent } from './components/shopping-cart/product-list
 import { AuthGuard } from './auth/auth.guard';
 import { CheckoutPaymentComponent } from './components/checkout/checkout-payment/checkout-payment.component';
 import { HomeComponent } from './components/home/home.component';
+import { SuccessComponent } from './components/checkout/success/success.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:  HomeComponent},
   { path: 'cart', component: CheckoutComponent,canActivate: [AuthGuard]},
-  { path: 'checkout', component: CheckoutPaymentComponent,canActivate: [AuthGuard]},
+  { path: 'checkout', component: CheckoutPaymentComponent,canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'products', component: ShoppingCartComponent },
   { path: 'category/:cname', component: ShoppingCartComponent },
   { path: 'products/:id', component: ProductDetailsComponent},
+  { path: 'success', component: SuccessComponent, canActivate : [AuthGuard]},
   { path: '**', component: PageNotFoundComponent }
 ]
 

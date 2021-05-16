@@ -10,6 +10,15 @@ import { MessengerService } from 'src/app/services/messenger.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  emptyCart = true;
+    checkEmptyCart() {
+      this.cartService.getCartItem().subscribe(data => {
+        if (data.length) {
+          this.emptyCart = false;
+        }
+      })
+    }
+
   cartItems : CartItem[] = [];
   cartTotal = 0;
 

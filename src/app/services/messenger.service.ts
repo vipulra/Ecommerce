@@ -7,6 +7,15 @@ import { Product } from '../models/product';
 })
 export class MessengerService {
 
+  sendFilteredProductByCatergory(productList: Product[]) {
+    this.sub.next(productList);
+  }
+
+  getFilteredProductByCatergory() {
+    return this.sub.asObservable();
+  }
+
+  sub = new Subject();
   subject = new Subject();
 
   constructor() { }

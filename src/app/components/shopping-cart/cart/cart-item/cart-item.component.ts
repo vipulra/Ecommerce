@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Output, EventEmitter } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
@@ -13,7 +14,9 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem :any;
   @Output() deleteEvent = new EventEmitter<{productId: number, id : number}>();
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,
+    public route : Router
+    ) { }
 
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})

@@ -28,6 +28,15 @@ export class CheckoutPaymentComponent implements OnInit {
     private router: Router,
     ) { }
 
+    emptyCart = true;
+    checkEmptyCart() {
+      this.cartService.getCartItem().subscribe(data => {
+        if (data.length) {
+          this.emptyCart = false;
+        }
+      })
+    }
+
     buildForm() {
       this.shipAdd = this.builder.group({
         firstName: ['', Validators.required],
@@ -55,7 +64,7 @@ export class CheckoutPaymentComponent implements OnInit {
       if (!this.shipAdd.invalid) { // Checks form input validity
         this.orderService.save(this.shipAdd.value,this.cartItems).subscribe({
           next: data => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/success']);
             data.cartItems.forEach((element:any) => {
               this.cartService.deleteItemToCart(element.productId);
             });
@@ -72,6 +81,7 @@ export class CheckoutPaymentComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.checkEmptyCart();
     this.buildForm()
     this.handleSubscription();
     this.loadCartItems();

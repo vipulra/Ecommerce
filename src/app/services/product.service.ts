@@ -45,7 +45,6 @@ export class ProductService {
     return this.http.get<Product[]>(productUrl).pipe(
       map((result:any) => {
         const label = [...new Set(result.map((product:any) => product.tag))];
-        console.log(label);
         return label;
       })
     )

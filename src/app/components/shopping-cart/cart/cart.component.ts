@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item';
 import { CartService } from 'src/app/services/cart.service';
 import { MessengerService } from 'src/app/services/messenger.service';
@@ -17,7 +18,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private msg: MessengerService,
-    private cartService : CartService
+    private cartService : CartService,
+    public route : Router
     ) { }
 
   ngOnInit() {

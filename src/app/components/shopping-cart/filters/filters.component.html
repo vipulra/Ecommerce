@@ -1,24 +1,25 @@
 <div class="card">
 	<article class="card-group-item">
-		<header class="card-header"><h6 class="title">Similar category </h6></header>
+		<header class="card-header"><h6 class="title">Brands</h6></header>
 		<div class="filter-content">
 			<div class="list-group list-group-flush" *ngFor = "let brand of brands">
-			  <a href="#" class="list-group-item">{{brand}}<span class="float-right badge badge-light round">{{brand}}</span> </a>
+			  <a href="#" class="list-group-item">{{brand}}</a>
 			</div>  <!-- list-group .// -->
 		</div>
-	</article> <!-- card-group-item.// -->
+	</article>
+</div><!-- card-group-item.// -->
+<div class="card">
   <article class="card-group-item">
 		<header class="card-header">
-			<h6 class="title">Selection </h6>
+			<h6 class="title">Selection</h6>
 		</header>
 		<div class="filter-content">
 			<div class="card-body" *ngFor = "let tag of tags">
 				<div class="custom-control custom-checkbox">
-					<span class="float-right badge badge-light round">52</span>
 				  	<input type="checkbox" class="custom-control-input" id=`{{tag}}`>
 				  	<label class="custom-control-label" for=`{{tag}}`>{{tag}}</label>
 				</div> <!-- form-check.// -->
 			</div> <!-- card-body.// -->
 		</div>
-	</article> <!-- card-group-item.// --
-</div> <!-- card.// -->
+	</article> <!-- card-group-item.// -->
+</div>

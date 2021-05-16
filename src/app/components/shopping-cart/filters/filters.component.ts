@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessengerService } from 'src/app/services/messenger.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -8,19 +9,19 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class FiltersComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private msg : MessengerService) { }
 
   brands: any;
   tags:any;
   getAllBrand() {
-    this.productService.getAllBrand().subscribe(data=> {
-      this.brands = data;
+    this.msg.getFilteredProductByCatergory().subscribe((data:any)=> {
+      this.brands = [...new Set(data.map((product:any) => product.brand))];
     })
   }
 
   getAllTags() {
-    this.productService.getAllLabel().subscribe(data=> {
-      this.tags = data;
+    this.msg.getFilteredProductByCatergory().subscribe((data:any)=> {
+      this.tags = [...new Set(data.map((product:any) => product.tag))];
     })
   }
 

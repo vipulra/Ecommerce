@@ -43,6 +43,12 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
+  buyNow() {
+    this.handleAddToCart();
+    this.router.navigate(['/checkout']);
+
+  }
+
 
   onBack(): void {
     this.router.navigate(['/']);

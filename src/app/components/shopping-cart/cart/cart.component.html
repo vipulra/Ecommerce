@@ -1,16 +1,20 @@
+
 <div *ngIf="cartItems.length === 0" class="alert alert-info">Your Cart is Empty.</div>
 
 <ul *ngIf="cartItems.length > 0" class="list-group scroll">
   <h6 class="mb-4">Cart (<span>{{cartItems.length}}</span> items)
   <span class="float-right"><strong>Total :</strong> {{ cartTotal | currency:'INR' }}</span></h6>
-  <li class="list-group-item border-0">
-    <button routerLink="/cart" type="button" class="btn btn-primary btn-block">Checkout</button>
-  </li>
+
+    <button
+      *ngIf="!(this.route.url === '/checkout')"
+      routerLink="/checkout"
+      type="button"
+      class="btn btn-primary btn-block">Checkout</button>
   <li class="list-group-item border" *ngFor="let item of cartItems">
     <app-cart-item [cartItem]="item" (deleteEvent) = "deleteItem($event.productId, $event.id)"></app-cart-item>
   </li>
-
-  <li class="list-group-item border-0">
-    <button routerLink="/cart" type="button" class="btn btn-primary btn-block">View Cart</button>
-  </li>
 </ul>
+<button *ngIf="!(this.route.url === '/checkout')"
+  routerLink="/cart"
+  type="button"
+  class="btn btn-primary btn-block">View Cart</button>
