@@ -30,6 +30,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.handleSubscription();
     this.loadCartItems();
+    this.checkEmptyCart();
   }
 
   removeItemLine(id: number){

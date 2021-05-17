@@ -81,10 +81,10 @@ export class CheckoutPaymentComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.checkEmptyCart();
     this.buildForm()
     this.handleSubscription();
     this.loadCartItems();
+    this.checkEmptyCart();
   }
 
   removeItemLine(id: number){
