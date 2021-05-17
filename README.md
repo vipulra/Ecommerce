@@ -1,6 +1,50 @@
-# Ecommerce
+# Shopping Cart Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
+Deployed Application link: 
+https://silly-heyrovsky-19ef25.netlify.app/
+
+## Overview: 
+Developed an “e-commerce” web app. Application displayed list of the products. User should be able to search product, view details/description of product, add product to cart and checkout.
+
+![image](https://user-images.githubusercontent.com/63492410/118406477-dbdedf00-b699-11eb-9549-ab668181d88a.png)
+
+### For Backend: 
+  •	Used mockapi.io (for dummy data) 
+### For Frontend: 
+  •	Used Angular 11, HTML5, CSS3
+
+## Backend Overview:
+  •	API url :  https://609265ea85ff510017212a0d.mockapi.io
+
+  •	API end point (GET, POST, PUT, DELETE)
+####  	    /product 
+####        /cart 
+####  	    /orders
+
+## Frontend Overview:
+  •	Frontend URL (Home) : https://silly-heyrovsky-19ef25.netlify.app/
+
+  •	Routes :
+    	Login
+    	Products
+    	category/categoryname
+    	products
+    	products/id
+    	cart
+    	checkout
+    	success
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Development server
 
